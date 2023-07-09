@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Test btn</title>
+        <style>
+        main {
+                height: 100vh;
+                width: 30%;
+                background-color: #B7E1E4;
+                display: flex;
+                align-items: center;
+                justify-content: space-evenly;
+        }
+
+        .active {
+            color: #fff;
+            background-color: #FF0000;
+        }
+    </style>
+    </head>
+    <body>
+        <main>
+
+        </main>
+        <!-- js -->
+        <script>
+        const btnList = document.querySelector('main');
+
+        // function to create button
+        function createBTN(nameBTN, className) {
+           const btn = document.createElement('button');
+           btn.innerText = nameBTN;
+           btn.className = className;
+           return btn;
+        }
+
+        // create btn
+        const btns = [
+            createBTN('Button1', 'btn'),
+            createBTN('Button2', 'btn'),
+            createBTN('Button3', 'btn'),
+            createBTN('Button4', 'btn')
+        ]
+        // add attribute to btn
+        for (let i =0; i< btns.length; i++) {
+            btnList.appendChild(btns[i]); // import btn into main
+            btns[i].id = i + 1;
+            btns[i].style.padding = '20px';
+            btns[i].style.cursor = 'pointer';
+        }
+
+        // active btn function
+        function activeButton() {
+
+            for (let i =0; i< btns.length; i++) {
+                if(btns[i].id === this.id) {
+                    btns[i].classList.add('active');
+                } else {
+                    btns[i].classList.remove('active');
+                }
+            }
+        }   
+
+        // add event
+        for (const btn of btns) {
+            btn.addEventListener('click', activeButton);
+        }
+
+    </script>
+
+    </body>
+</html>
